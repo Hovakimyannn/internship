@@ -1,1 +1,1 @@
-[{"username":"Harut","email":"admin@mail.com","password":"asd","userid":1},{"username":"Armen","email":"user1@user.com","password":"asd","userid":2},{"userid":3,"username":"Lilit","email":"LilitAsilbekyan@gmail.com","password":"asd"}]
+[{"userid":1,"username":"Harut","email":"admin@mail.com","password":"$2y$10$l3sJSWbAVyjgFqjvleGvNeosWruN5RrAZpAZPXZH2bJT5aOC1yHBO"},{"userid":2,"username":"Armen","email":"user1@user.com","password":"$2y$10$qMQolFI8UYst3FIyPjGmQOfphsKRauUX5Km9hn0n87B1ZXNUulKvK"}]

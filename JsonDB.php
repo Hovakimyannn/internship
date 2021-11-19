@@ -11,19 +11,10 @@ class JsonDB
         if (self::isEmpty()){
             file_put_contents('usersInfo.json', json_encode($user));
         }else{
-
             $users = self::read();
             $users[] = $user->user;
             file_put_contents('usersInfo.json', json_encode($users));
         }
-
-      /*  if ($user->uniqueUser() && $user->validation()) {
-            $user->setId();*/
-
-       /* } else {
-            header('Location:signUp.php');
-            exit;
-        }*/
     }
 
     public function read(): array
@@ -37,6 +28,6 @@ class JsonDB
 
     public function isEmpty(): bool
     {
-        return !is_readable('usersInfo.json');
+        return !filesize('usersInfo.json');
     }
 }

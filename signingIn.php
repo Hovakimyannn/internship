@@ -1,15 +1,18 @@
 <?php
 session_start();
-
+spl_autoload_register(function ($className) {
+    require $className . '.php';
+});
 unset($_SESSION['incorrect_password']);
 
-$data = file_get_contents("usersInfo.json");
-$data = json_decode($data, true);
+$jsonDB = new JsonDB();
+var_dump($jsonDB);
+$users = $jsonDB->read();
 
-foreach ($data as $theuser) {
-    if ($theuser['username'] == $_POST['username']) {
-        if ($theuser['password'] == $_POST['password']) {
-            $_SESSION['user'] = json_encode($theuser);
+foreach ($users as $user) {
+    if ($user['username'] == $_POST['username']) {
+        if (password_verify($_POST['password'],$user['password'])) {
+            $_SESSION['user'] = $jsonDB->read();
             unset($_SESSION['incorrect_password']);
             header("Location: mainPage.php");
             exit();

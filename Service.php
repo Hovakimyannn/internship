@@ -1,10 +1,32 @@
 <?php
-
-spl_autoload_register(function ($className){
+session_start();
+spl_autoload_register(function ($className) {
     require $className . '.php';
 });
 
-$user = new JsonDB();
-$user->write(new User($_POST['username'], $_POST['email'], $_POST['password']));
+class Service
+{
+    private JsonDB $jsonDB;
+    private User $user;
 
-header('Location:mainPage.php');
+    public function __construct()
+    {
+        $this->jsonDB = new JsonDB();
+    }
+
+    public function addUser()
+    {
+        $this->user = new User($_POST['username'], $_POST['email'], $_POST['password']);
+        if ($this->user->uniqueUser() && $this->user->validation()) {
+            $this->jsonDB->write($this->user);
+            $_SESSION['user'] = $this->jsonDB->read();
+        } else {
+            header('Location:signUp.php');
+            exit;
+        }
+        header('Location:mainPage.php');
+    }
+}
+$service = new Service();
+$service->addUser();
+

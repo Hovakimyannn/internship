@@ -53,14 +53,14 @@
 
     <?php
     session_start();
-    echo "<pre>";
-    print_r($_SESSION);
-    $data = file_get_contents("usersInfo.json");
-    $data = json_decode($data, true);
+    spl_autoload_register(function ($className) {
+        require $className . '.php';
+    });
+    $jsonDB = new JsonDB();
+    $data = $jsonDB->read();
 
-    if (isset($data)) {
-        foreach ($data as $key => $item) {
-            echo "<tr> 
+    foreach ($data as $key => $item) {
+        echo "<tr> 
                 <th>{$item['userid']}</th> 
                 <th>{$item['username']}</th> 
                 <th>{$item['email']}</th> 
@@ -72,7 +72,6 @@
                     </form>
                </th>
             </tr>";
-        }
     }
 
     ?>

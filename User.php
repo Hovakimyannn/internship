@@ -4,17 +4,22 @@ session_start();
 unset($_SESSION['username_error']);
 unset($_SESSION['password_error']);
 
-class User implements JsonSerializable
+class User extends JsonDB implements JsonSerializable
 {
     protected string $username;
     protected string $email;
     protected string $password;
     public array $user;
-    protected int $userid = 0;
+    protected int $userid;
 
     public function __construct($username, $email, $password)
     {
-        //$this->setId();
+        if (!$this->isEmpty()) {
+            $users = $this->read();
+            $this->userid = end($users)['userid'] + 1;
+        } else {
+            $this->userid = 1;
+        }
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
@@ -22,9 +27,8 @@ class User implements JsonSerializable
             'userid' => $this->userid,
             'username' => $username,
             'email' => $email,
-            'password' => $password,
+            'password' => password_hash($password,PASSWORD_DEFAULT),
         ];
-
     }
 
     public function validation(): bool
@@ -42,8 +46,7 @@ class User implements JsonSerializable
     public function uniqueUser(): bool
     {
         unset($_SESSION['unique_email']);
-        $data = file_get_contents("usersInfo.json");
-        $data = json_decode($data, true);
+        $data = $this->read();
         $result = true;
         foreach ($data as $user) {
             if ($_POST['email'] == $user['email']) {
@@ -55,20 +58,9 @@ class User implements JsonSerializable
         return $result;
     }
 
-    public function setId()
-    {
-        if (!JsonDB::class->isEmpty()) {
-            $users = JsonDB::class->read();
-            $this->userid = end($users)['userid'] + 1;
-        } else {
-            $this->userid = 1;
-        }
-    }
-
     public function jsonSerialize()
     {
-        print_r(JsonDB::class->isEmpty());
-        if (JsonDB::class->isEmpty()) {
+        if ($this->isEmpty()) {
             return [
                 $this->user,
             ];
