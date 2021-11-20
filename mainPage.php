@@ -35,7 +35,7 @@
                 <th>
                     <form action='delete.php' method='post'>
                         <input class='hidden' type='text' name='id' value={$item['userid']}>
-                        <input type='submit' name='userid' value='delete'>
+                        <input class='delete-button' type='submit' name='userid' value='delete'>
                     </form>
                </th>
             </tr>";

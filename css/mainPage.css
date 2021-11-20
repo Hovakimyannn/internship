@@ -30,3 +30,12 @@ tr:nth-child(even) {
 .hidden {
     display: none;
 }
+
+.delete-button:hover {
+    color: whitesmoke;
+    background-color: red;
+}
+
+.delete-button{
+    border-radius: 5px;
+}
