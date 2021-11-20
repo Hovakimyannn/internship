@@ -1,1 +1,32 @@
-[{"userid":1,"username":"Armen","email":"admin@mail.com","password":"$2y$10$6FNZ3lQx6zBvEMeOWU50du04COket1s13giT6XQLnUi0k9KV1I9O2"}]
+[
+  {
+    "userid": 1,
+    "username": "Harut",
+    "email": "harut@mail.ru",
+    "password": "$2y$10$tA0\/95QhBMJJWD941n\/dwurOWu3uaiUix.0xF1oS20.f2LclYeZB6"
+  },
+  {
+    "userid": 2,
+    "username": "Lilit",
+    "email": "LilitAsilbekyan@gmail.com",
+    "password": "$2y$10$u5Qa6mLAGRSB9DDzztK0CeiPpPZaNb89DP9gaeQyBImfL1p0eoDqa"
+  },
+  {
+    "userid": 4,
+    "username": "Milena",
+    "email": "Milena@mail.ru",
+    "password": "$2y$10$AZaAh8C2ItDrVfEJPK4m4upePEbQ.0Aa0bGXQKXtmgEKxi6QyEoGi"
+  },
+  {
+    "userid": 5,
+    "username": "Grish",
+    "email": "grish@mail.ru",
+    "password": "$2y$10$E4Z12EiYJuvhIEFYziIkR.\/SYGxoeL1eN9qk4TsZHIx7\/0zEZTQZy"
+  },
+  {
+    "userid": 6,
+    "username": "Siranush",
+    "email": "Siranush@mail.ru",
+    "password": "$2y$10$vCE4z0Byfcq08lgA9FFhh.pmgkTLFLl72Mrp37.P0EN\/qr6DTGLwi"
+  }
+]

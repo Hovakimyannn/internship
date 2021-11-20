@@ -23,7 +23,7 @@
     spl_autoload_register(function ($className) {
         require $className . '.php';
     });
-    $jsonDB = new JsonDB();
+    $jsonDB = new Model();
     $data = $jsonDB->read();
 
     foreach ($data as $key => $item) {

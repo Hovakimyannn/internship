@@ -18,12 +18,13 @@
     ?>
 <div class="container">
     <h1 class="text">Sign In</h1>
-    <form action="signingIn.php" method="post">
+    <form action="login.php" method="post">
         <input type="text" placeholder="username" name="username">
         <p>
             <?php
             if(isset($_SESSION['incorrect_password'])) {
                 echo $_SESSION['incorrect_password'];
+                unset($_SESSION['incorrect_password']);
             }
             ?>
         </p>

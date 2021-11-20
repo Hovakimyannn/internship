@@ -14,7 +14,7 @@ session_start();
 ?>
 <div class="container">
     <h1 class="text">Sign Up</h1>
-    <form action="create.php" method="post">
+    <form action="register.php" method="post">
         <p>
             <?php
             if (isset($_SESSION['username_error'])) {

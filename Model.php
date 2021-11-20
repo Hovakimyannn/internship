@@ -4,7 +4,7 @@ spl_autoload_register(function ($className) {
     require $className . '.php';
 });
 
-class JsonDB
+class Model
 {
     public function write(User $user)
     {
@@ -27,7 +27,11 @@ class JsonDB
 
     public function update(array $users)
     {
-        file_put_contents('usersInfo.json', json_encode($users));
+        $myUsers = [];
+        foreach ($users as $user) {
+            $myUsers[] = $user;
+        }
+        file_put_contents('usersInfo.json', json_encode($myUsers));
     }
 
     public function isEmpty(): bool

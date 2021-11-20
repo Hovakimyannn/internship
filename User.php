@@ -4,13 +4,13 @@ session_start();
 unset($_SESSION['username_error']);
 unset($_SESSION['password_error']);
 
-class User extends JsonDB implements JsonSerializable
+class User extends Model implements JsonSerializable
 {
     protected string $username;
     protected string $email;
     protected string $password;
-    public array $user;
     protected int $userid;
+    public array $user;
 
     public function __construct($username, $email, $password)
     {
@@ -64,8 +64,8 @@ class User extends JsonDB implements JsonSerializable
             return [
                 $this->user,
             ];
-        } else
-            return $this->user;
+        }
+        return $this->user;
     }
 }
 
