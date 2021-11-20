@@ -6,20 +6,20 @@ spl_autoload_register(function ($className) {
 
 class UserController
 {
-    private Model $jsonDB;
+    private Model $model;
     private User $user;
 
     public function __construct()
     {
-        $this->jsonDB = new Model();
+        $this->model = new Model();
     }
 
     public function addUser(User $user)
     {
         $this->user = $user;
         if ($this->user->uniqueUser() && $this->user->validation()) {
-            $this->jsonDB->write($this->user);
-            $_SESSION['user'] = $this->jsonDB->read();
+            $this->model->write($this->user);
+            $_SESSION['user'] = $this->model->read();
             header('Location:mainPage.php');
         } else {
             header('Location:signUp.php');
@@ -29,11 +29,11 @@ class UserController
 
     public function deleteById(int $id): void
     {
-        $users = $this->jsonDB->read();
+        $users = $this->model->read();
         foreach ($users as $key => $user) {
             if ($user['userid'] == $id) {
                 unset($users[$key]);
-                $this->jsonDB->update($users);
+                $this->model->update($users);
                 header('location:mainPage.php');
                 exit;
             }
@@ -42,7 +42,7 @@ class UserController
 
     public function getById($id): array|bool
     {
-        $users = $this->jsonDB->read();
+        $users = $this->model->read();
         $findUser = 0;
         foreach ($users as $key => $user) {
             if ($user['userid'] == $id) {
@@ -54,7 +54,7 @@ class UserController
 
     public function getAll(): array
     {
-        return $this->jsonDB->read();
+        return $this->model->read();
     }
 }
 

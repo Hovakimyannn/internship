@@ -23,18 +23,18 @@
     spl_autoload_register(function ($className) {
         require $className . '.php';
     });
-    $jsonDB = new Model();
-    $data = $jsonDB->read();
+    $model = new Model();
+    $users = $model->read();
 
-    foreach ($data as $key => $item) {
+    foreach ($users as $key => $user) {
         echo "<tr> 
-                <th>{$item['userid']}</th> 
-                <th>{$item['username']}</th> 
-                <th>{$item['email']}</th> 
-                <th>{$item['password']}</th> 
+                <th>{$user['userid']}</th> 
+                <th>{$user['username']}</th> 
+                <th>{$user['email']}</th> 
+                <th>{$user['password']}</th> 
                 <th>
                     <form action='delete.php' method='post'>
-                        <input class='hidden' type='text' name='id' value={$item['userid']}>
+                        <input class='hidden' type='text' name='id' value={$user['userid']}>
                         <input class='delete-button' type='submit' name='userid' value='delete'>
                     </form>
                </th>

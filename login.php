@@ -4,8 +4,8 @@ spl_autoload_register(function ($className) {
     require $className . '.php';
 });
 
-$service = new UserController();
-$users = $service->getAll();
+$controller = new UserController();
+$users = $controller->getAll();
 
 foreach ($users as $user) {
     if ($user['username'] == $_POST['username']) {
