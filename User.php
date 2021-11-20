@@ -27,7 +27,7 @@ class User extends JsonDB implements JsonSerializable
             'userid' => $this->userid,
             'username' => $username,
             'email' => $email,
-            'password' => password_hash($password,PASSWORD_DEFAULT),
+            'password' => password_hash($password, PASSWORD_DEFAULT),
         ];
     }
 

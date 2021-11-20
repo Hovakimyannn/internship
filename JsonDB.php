@@ -8,9 +8,9 @@ class JsonDB
 {
     public function write(User $user)
     {
-        if (self::isEmpty()){
+        if (self::isEmpty()) {
             file_put_contents('usersInfo.json', json_encode($user));
-        }else{
+        } else {
             $users = self::read();
             $users[] = $user->user;
             file_put_contents('usersInfo.json', json_encode($users));
@@ -19,16 +19,15 @@ class JsonDB
 
     public function read(): array
     {
-        if (!self::isEmpty())
-        {
-            return json_decode(file_get_contents("usersInfo.json"),1);
+        if (!self::isEmpty()) {
+            return json_decode(file_get_contents("usersInfo.json"), 1);
         }
         return [];
     }
 
     public function update(array $users)
     {
-        file_put_contents('usersInfo.json',json_encode($users));
+        file_put_contents('usersInfo.json', json_encode($users));
     }
 
     public function isEmpty(): bool

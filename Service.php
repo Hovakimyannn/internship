@@ -30,9 +30,8 @@ class Service
     public function deleteById(int $id)
     {
         $users = $this->jsonDB->read();
-        foreach ($users as $key=>$user) {
-            if ($user['userid']==$id)
-            {
+        foreach ($users as $key => $user) {
+            if ($user['userid'] == $id) {
                 unset($users[$key]);
                 $this->jsonDB->update($users);
                 header('location:mainPage.php');

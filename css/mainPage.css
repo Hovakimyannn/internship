@@ -1,0 +1,32 @@
+* {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 60%;
+    margin: 100px auto;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
+
+.hidden {
+    display: none;
+}

@@ -11,7 +11,7 @@ $users = $jsonDB->read();
 
 foreach ($users as $user) {
     if ($user['username'] == $_POST['username']) {
-        if (password_verify($_POST['password'],$user['password'])) {
+        if (password_verify($_POST['password'], $user['password'])) {
             $_SESSION['user'] = $jsonDB->read();
             unset($_SESSION['incorrect_password']);
             header("Location: mainPage.php");
