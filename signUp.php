@@ -54,7 +54,7 @@
     ?>
     <div class="container">
         <h1 class="text">Sign Up</h1>
-        <form action="Service.php" method="post">
+        <form action="create.php" method="post">
             <p>
                 <?php
                 if(isset($_SESSION['username_error'])) {

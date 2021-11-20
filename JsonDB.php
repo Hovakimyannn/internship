@@ -26,6 +26,11 @@ class JsonDB
         return [];
     }
 
+    public function update(array $users)
+    {
+        file_put_contents('usersInfo.json',json_encode($users));
+    }
+
     public function isEmpty(): bool
     {
         return !filesize('usersInfo.json');
